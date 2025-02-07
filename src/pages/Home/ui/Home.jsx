@@ -8,7 +8,7 @@ export function Home() {
 
   return (
     <div className="">
-      <Header />
+      <Header props={isSwitched} />
       <SideBar />
       <PostFeed />
     </div>
