@@ -3,6 +3,7 @@ import { AuthContext } from "./tokenState";
 import { AuthProvider } from "./tokenState";
 import "C:/Users/Home/forglovov23/src/index.css"
 import Regist from "./regist";
+import { CreatePostModal } from "../../features/CreatePostModal";
 
 function LoginForm({onClose , authtoreg}) {
 
@@ -15,6 +16,7 @@ function LoginForm({onClose , authtoreg}) {
 const finish = async (e) => {
     e.preventDefault();
     await handleLogin(name ,password);
+    
 }
 
 if(state) {

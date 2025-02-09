@@ -23,8 +23,6 @@ export const loginInfo = async(name , password) => {
     } catch {
         console.error('ошибка пр получении токена')
     }
-
-    
 }
 
 export const logout = async() => {
