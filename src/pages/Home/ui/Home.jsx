@@ -1,16 +1,13 @@
-import { Header } from "../../../widget/Header";
-import { SideBar } from "../../../widget/SideBar";
-import { PostFeed } from "../../../PostFeed/ui/PostFeed";
-import { useState } from "react";
+import { SideBar } from "../../../widgets/SideBar";
+import { PostFeed } from "../../../widgets/PostFeed";
 
 export function Home() {
-  const [isSwitched, setIsSwitched] = useState(false);
-
   return (
-    <div className="">
-      <Header props={isSwitched} />
+    <div className="relative">
       <SideBar />
-      <PostFeed />
+      <div className="w-full flex justify-center">
+        <PostFeed />
+      </div>
     </div>
   );
 }
