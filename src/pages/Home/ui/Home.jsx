@@ -1,6 +1,6 @@
-import { Header } from "../../../widget/Header";
-import { SideBar } from "../../../widget/SideBar";
-import { PostFeed } from "../../../PostFeed/ui/PostFeed";
+import { Header } from "../../../widgest/Header";
+import { SideBar } from "../../../widgest/SideBar";
+import { PostFeed } from "../../../widgest/PostFeed";
 import { useState } from "react";
 
 export function Home() {

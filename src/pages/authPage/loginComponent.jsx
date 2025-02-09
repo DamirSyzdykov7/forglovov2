@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "./tokenState";
 import { AuthProvider } from "./tokenState";
-import "/src/output.css"
+import "C:/Users/Home/forglovov23/src/index.css"
 import Regist from "./regist";
 
 function LoginForm({onClose , authtoreg}) {
