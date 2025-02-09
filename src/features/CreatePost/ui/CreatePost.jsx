@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CreatePostModal } from "../../CreatePostModal";
+import { Plus } from "lucide-react";
 
 export function CreatePost() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,7 @@ export function CreatePost() {
           onClick={handleOpenModal}
           className="bg-blue-500 text-white p-2 rounded-full cursor-pointer hover:bg-blue-600"
         >
-          +
+          <Plus />
         </button>
       </div>
       <CreatePostModal

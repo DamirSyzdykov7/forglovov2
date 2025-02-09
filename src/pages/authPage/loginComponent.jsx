@@ -1,72 +1,95 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "./tokenState";
-import { AuthProvider } from "./tokenState";
-import "C:/Users/Home/forglovov23/src/index.css"
+"use client";
+
+import { useContext, useState } from "react";
+import { AuthContext, AuthProvider } from "./tokenState";
+import "../../index.css";
 import Regist from "./regist";
 
-function LoginForm({onClose , authtoreg}) {
+// eslint-disable-next-line react/prop-types
+function LoginForm({ onClose, authtoreg }) {
+  const { handleLogin } = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [state, setState] = useState(false);
 
-    const {handleLogin} = useContext(AuthContext);
-    const [name ,setName] = useState('');
-    const [password ,setPassword] = useState('');
-    const [state, setState] = useState(false)
-
-
-const finish = async (e) => {
+  const finish = async (e) => {
     e.preventDefault();
-    await handleLogin(name ,password);
-}
+    await handleLogin(name, password);
+  };
 
-if(state) {
-    return (
-        <Regist/>
-    )
-}
+  if (state) {
+    return <Regist />;
+  }
 
-return (
+  return (
     <AuthProvider>
-        <>
-        <div className="fixed inset-0 bg-gray bg-opacity-70 flex justify-center items-center z-50">
-            <div className=" text-center bg-white rounded-[15px]">
-                <div className="w-[400px] h-[300px] border-2 rounded-[15px] flex justify-center">
-                    <div className="">
-                        <div className="border-b-2">
-                            <div className="absolute">
-                                    <button className="ml-[260px]" onClick={onClose}>Х</button>
-                            </div>
-                                <h1><p className="pt-[20px]">Добро пожаловать</p></h1>
-                            <h2 className="pb-[20px]">введит ваши данные</h2>
-                        </div>
-                        <form onSubmit={finish} method="POST">
-                                <p className="mt-[30px]">
-                                    <input 
-                                        placeholder="login" 
-                                        className="border-2" 
-                                        type="text" id="name" 
-                                        value={name ? `${name}` : ''} onChange={(e) => setName(e.target.value)}>
-                                    </input>
-                                </p>
-                                <p className="mt-[20px]">
-                                    <input
-                                        placeholder="password" 
-                                        className="border-2" 
-                                        type="password" 
-                                        id="password" 
-                                        value={password ? `${password}` : ''} onChange={(e) => setPassword(e.target.value)}>
-                                </input>
-                                </p>
-                            <button  className="mt-[20px] border-2 rounded-[6px] w-[65px]" type="submit">войти</button>
-                        </form>
-                            <div>
-                                <button onClick={authtoreg}  >зарегестрироваться</button>
-                            </div>
-                    </div>
-                </div>
+      <div className="fixed inset-0 bg-[#2b3b59] bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-[#2b3b59]">
+              Добро пожаловать
+            </h2>
+            <button
+              onClick={onClose}
+              className="text-[#2b3b59] hover:text-[#5375b0] transition-colors"
+            >
+              X
+            </button>
+          </div>
+          <p className="text-[#767bb5] mb-6">введите ваши данные</p>
+          <form onSubmit={finish} method="POST" className="space-y-4">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-[#2b3b59]"
+              >
+                Логин
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-[#b4c2dc] rounded-md shadow-sm focus:outline-none focus:ring-[#38a2fe] focus:border-[#38a2fe]"
+                placeholder="Введите логин"
+              />
             </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-[#2b3b59]"
+              >
+                Пароль
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-[#b4c2dc] rounded-md shadow-sm focus:outline-none focus:ring-[#38a2fe] focus:border-[#38a2fe]"
+                placeholder="Введите пароль"
+              />
+            </div>
+            <div className="flex justify-between items-center">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-[#38a2fe] text-white rounded-md hover:bg-[#5375b0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#38a2fe] transition-colors"
+              >
+                Войти
+              </button>
+              <button
+                type="button"
+                onClick={authtoreg}
+                className="text-[#38a2fe] hover:text-[#5375b0] transition-colors"
+              >
+                Зарегистрироваться
+              </button>
+            </div>
+          </form>
         </div>
-        </>
+      </div>
     </AuthProvider>
-)
+  );
 }
 
-export default LoginForm
+export default LoginForm;
