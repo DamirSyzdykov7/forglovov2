@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { useState } from "react";
 import axios from "axios";
 
 // eslint-disable-next-line react/prop-types

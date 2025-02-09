@@ -1,8 +1,6 @@
-import React from 'react'
-import axios from 'axios'
+import axios from "axios";
 
-
-const APP_URL = 'http://glovo';
+// const APP_URL = "http://glovo";
 
 //const loginForm = document.getElementById('loginForm');
 //const loginInput = document.getElementById('login');
@@ -15,29 +13,36 @@ const APP_URL = 'http://glovo';
 //    await loginInfo(login ,password);
 //})
 
-export const loginInfo = async(name , password) => {
-    try{
-       const tokenResponse = await axios.post("http://glovo/api/login", {name ,password})
-        localStorage.setItem('accessToken' ,tokenResponse.data.access_token)
-        return tokenResponse.data.access_token;
-    } catch {
-        console.error('ошибка пр получении токена')
-    }
+export const loginInfo = async (name, password) => {
+  try {
+    const tokenResponse = await axios.post("http://glovo/api/login", {
+      name,
+      password,
+    });
+    return tokenResponse.data; // Возвращаем весь объект ответа
+  } catch (error) {
+    console.error("Ошибка при получении токена:", error);
+    throw error; // Пробрасываем ошибку дальше
+  }
+};
 
-    
-}
-
-export const logout = async() => {
-    try{
-        const logoutToken = await axios.post("http://glovo/api/logout" ,{}, {
-            headers : {Authorization: `Bearer ${localStorage.getItem('accessToken')}`}
-        });
-        localStorage.removeItem('accessToken');
-    }
-    catch {
-        console.error('не существует или не существовало токена');
-    }
-}
+export const logout = async () => {
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const logoutToken = await axios.post(
+      "http://glovo/api/logout",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
+    localStorage.removeItem("accessToken");
+  } catch {
+    console.error("не существует или не существовало токена");
+  }
+};
 
 //export const  = async() => {
 //    try {
